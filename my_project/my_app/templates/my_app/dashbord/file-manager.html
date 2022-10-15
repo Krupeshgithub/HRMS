@@ -1,0 +1,65 @@
+﻿{% extends 'my_app/dashbord/head.html' %}
+{% block content %}
+{% load i18n %}
+
+								{% if uid %}
+								<div class="file-cont-wrap">
+									<div class="file-cont-inner">
+										<div class="file-cont-header">
+											<span><h3>File Manager</h3></span>
+											<div class="file-options">
+												<form class='form-control' action="{% url "file_manager" %}" method="POST" enctype="multipart/form-data">
+													<input type="file" name="files">
+                                                <input type="submit" value="submit">										        
+												</form>
+											</div>
+										</div>
+	                                   {% endif %}									
+										<div class="file-content">
+											
+											<div class="file-body">
+												<div class="file-scroll">	
+													<div class="file-content-inner">
+														<h4>Files</h4>
+														{% for i in F %}
+														<div class="row row-sm">
+															<div class="col-3 col-sm-4 ">
+																<div class="card card-file">
+																	<div class="dropdown-file">
+																		<a href="" class="dropdown-link" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+																		<div class="dropdown-menu dropdown-menu-right">
+																			{% comment %} <a href="#" class="dropdown-item">View Details</a>
+																			<a href="#" class="dropdown-item">Share</a> {% endcomment %}
+																			<a href="{% url "download" %}" class="dropdown-item" Download="{{i.logo.url}}">Download</a>
+																			{% comment %} <a href="#" class="dropdown-item">Rename</a>
+																			<a href="#" class="dropdown-item">Delete</a> {% endcomment %}
+																		</div>
+																	</div>
+																	<div class="card-file-thumb">
+																		<i class="fa fa-file-pdf-o"></i>
+																	</div>
+																	<div class="card-body">
+																		<h6><a href="">{{i.files.url}}</a></h6>
+																		<span>10.45kb</span>
+																	</div>
+																	<div class="card-footer">
+																		<span class="d-none d-sm-inline">Last Modified: </span>
+																	</div>
+																</div>
+															</div>
+														</div>
+														{% endfor %}
+													</div>
+												{% comment %} </div> {% endcomment %}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+                </div>
+				<!-- /Page Content -->
+{% endblock %}				
+         

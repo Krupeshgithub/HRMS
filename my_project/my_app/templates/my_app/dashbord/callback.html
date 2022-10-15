@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load i18n %}
+
+<head>
+    <title>Callback</title>
+   
+</head>
+<body>
+    <table>
+    <form class="form" method="POST" action="generate_slip">
+    {% csrf_token %}
+ 
+    <h2> Callback Message </h2>
+    <tr><td><th>MID</th></td><td><input type="text" class="form-control" value={{ MID }}  readonly></td></tr>
+    <tr><td><th>TXNID</th></td><td><input type="text" class="form-control" value={{ TXNID }} readonly></td></tr>
+    <tr><td><th>ORDERID</th></td><td><input type="text" class="form-control" value={{ ORDERID }} readonly></td></tr>
+    <tr><td><th>BANKTXNID</th></td><td><input type="text" class="form-control" value={{ BANKTXNID }} readonly></td></tr>
+    <tr><td><th>TXNAMOUNT</th></td><td><input type="text" class="form-control" value={{ TXNAMOUNT }} readonly></td></tr>
+    <tr><td><th>CURRENCY</th></td><td><input type="text" class="form-control" value={{ CURRENCY }} readonly></td></tr>
+    <tr><td><th>STATUS</th></td><td><input type="text" class="form-control" value={{ STATUS }} readonly></td></tr>
+    <tr><td><th>RESPCODE</th></td><td><input type="text" class="form-control" value={{ RESPCODE }} readonly></td></tr>
+    <tr><td><th>RESPMSG</th></td><td><input type="text" class="form-control" value={{ RESPMSG }} readonly></td></tr>
+    <tr><td><th>TXNDATE</th></td><td><input type="text" class="form-control" value={{ TXNDATE }} readonly></td></tr>
+    <tr><td><th>GATEWAYNAME</th></td><td><input type="text" class="form-control" value={{ GATEWAYNAME }} readonly></td></tr>
+    <tr><td><th>BANKNAME</th></td><td><input type="text" class="form-control" value={{ BANKNAME }} readonly></td></tr>
+    <tr><td><th>PAYMENTMODE</th></td><td><input type="text" class="form-control" value={{ PAYMENTMODE }} readonly></td></tr>
+    <tr><td><th>CHECKSUMHASH</th></td><td><input type="text" class="form-control" value={{ CHECKSUMHASH }} readonly></td></tr>
+
+    </form>
+</table>
+
+</body>
+</html>

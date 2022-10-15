@@ -1,0 +1,83 @@
+{% extends 'my_app/dashbord/head.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+					<!-- Page Header -->
+					<div class="page-header">
+							<div class="col-sm-12">
+								<h3 class="page-title">Attendance</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item active">Attendance</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				
+					<!-- /Search Filter -->
+					{% comment %} <div class="row"> {% endcomment %}
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-striped custom-table datatable">
+									<thead>
+										<tr>
+											{% comment %} <th>Date</th> {% endcomment %}
+											<th>No</th>
+											<th>Name</th>
+											<th>Employee ID</th>
+											<th>Punch In</th>
+											<th>Punch Out</th>
+											<th>Mobile</th>
+											{% comment %} <th class="text-nowrap">Join Date</th> {% endcomment %}
+										</tr>
+									</thead>
+									{% for i in hrd %}
+									<tbody>
+										<tr>
+											{% comment %} {% for i in date %}
+											<td>
+												<p>{% now "jS F Y" %}</p>
+											</td>
+											{% endfor %} {% endcomment %}
+											<td>
+												<h2 class="table-avatar">
+													{{forloop.counter}}</a>
+												</h2>
+											</td>
+											<td>
+												<h2 class="table-avatar">
+													{{i.name}}</a>
+												</h2>
+											</td>
+											<td>
+												<h2 class="table-avatar">
+													{{i.Employe_id}}</a>
+												</h2>
+											</td><td>
+												<h2 class="table-avatar">
+													{{i.puch_in}}</a>
+												</h2>
+											</td>
+                                            <td>
+												<h2 class="table-avatar">
+													{{i.puch_out}}</a>
+												</h2>
+											</td><td>
+												<h2 class="table-avatar">
+													{{i.phone}}</a>
+												</h2>
+											</td>
+											
+										</tr>
+									</tbody>
+									{% endfor %}
+								</table>
+							</div>
+						</div>
+					</div>
+                </div>
+				
+					
+                       
+		<!-- /Main Wrapper -->
+{% endblock %}

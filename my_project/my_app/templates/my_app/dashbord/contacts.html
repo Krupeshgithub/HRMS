@@ -1,0 +1,170 @@
+﻿{% extends 'my_app/dashbord/head.html' %}
+{% block content %}
+{% load i18n %}
+	
+<section>
+					<!-- Contact Wrapper -->
+					<div class="chat-main-wrapper">
+						<div class="col-lg-12 message-view">
+							<div class="chat-window">
+								<div class="fixed-header">
+									<div class="row">
+										<div class="col-6">
+											<h4 class="page-title mb-0">Contacts</h4>
+										</div>
+									   <div class="col-6">
+											<div class="navbar justify-content-end">
+												<div class="search-box m-t-0">
+													<div class="input-group input-group-sm">
+														<span class="input-group-append">
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="chat-contents">
+									<div class="chat-content-wrap">
+										<div class="chat-wrap-inner">
+											<div class="contact-box">
+											<div class="row">
+												<div class="contact-cat col-sm-4 col-lg-3">
+													<a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#add_contact"><i class="fa fa-plus"></i> Add Contact</a>
+													<div class="roles-menu">
+														<ul>
+															
+															{% comment %} <li class="active"><a href="javascript:void(0);">All</a></li> {% endcomment %}
+															{% comment %} <li><a href="#">Company</a></li> {% endcomment %}
+															<li><a href="{% url "uid" %}">Staff</a></li>
+															<li><a href="{% url "contacts" %}">Client</a></li>
+														</ul>
+													</div>
+												</div>
+												
+									{% comment %} <div class="row"> {% endcomment %}
+										
+											{% comment %} <div class="table-responsive"> {% endcomment %}
+												<table class="table table-striped custom-table datatable">
+													<thead>
+														<tr>
+															<th>No</th>
+															<th>Name</th>
+															<th>Mobile</th>
+														</tr>
+													</thead>
+													
+													{% for i in nid %}
+													<tbody>
+														<tr>
+															<td>
+																<h2 class="table-avatar">
+																	{{forloop.counter}}</a>
+																</h2>
+															</td>
+															<td>
+																<h2 class="table-avatar">
+																	{{i.name}}</a>
+																</h2>
+															</td>
+															<td>
+																<h2 class="table-avatar">
+																	{{i.phone}}</a>
+																</h2>
+															</td>
+															{% endfor %}
+																{% for i in client %}
+																<td>
+																<h2 class="table-avatar">
+																	{{forloop.counter}}</a>
+																</h2>
+															</td>
+															<td>
+																<h2 class="table-avatar">
+																	{{i.name}}</a>
+																</h2>
+															</td>
+															<td>
+																<h2 class="table-avatar">
+																	{{i.phone}}</a>
+																</h2>
+															</td>
+															
+														</tr>
+													</tbody>
+													
+													{% endfor %}
+
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+					<!-- /Contact Wrapper -->
+					
+				<!-- /Contact Main Row -->
+				
+				<!-- Add Contact Modal -->
+			    
+				<div class="modal custom-modal fade" id="add_contact" role="dialog">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<form type="form" action="{% url "contacts" %}" method ="POST">
+									{% csrf_token %}
+								<h5 class="modal-title">Add Contact(Only Client's)</h5>
+								<div class="form-group">
+									<label>Name<span class="text-danger">*</span></label>
+									<input type = "text" name="name" class="form-control" required>
+								</div>
+								<div class="form-group">
+									<label>Contact Number<span class="text-danger">*</span></label>
+									<input class="form-control" type="text" name="contact" required>
+								</div>
+								<div class="submit-section">
+								<input class="btn btn-primary submit-btn" type="submit" value="submit" />
+								</div>
+						</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- /Add Contact Modal -->
+				
+				
+
+				<!-- Delete Contact Modal -->
+				<div class="modal custom-modal fade" id="delete_contact" role="dialog">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-body">
+								<div class="form-header">
+									<h3>Delete Contact</h3>
+									<p>Are you sure want to delete?</p>
+								</div>
+								<div class="modal-btn delete-action">
+									<div class="row">
+										<div class="col-6">
+											<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+										</div>
+										<div class="col-6">
+											<a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Delete Contact Modal -->
+				
+			</div>
+			<!-- /Page Wrapper -->
+			
+        </div>
+		<!-- /Main Wrapper -->
+	</section>		
+{% endblock %}		
+		

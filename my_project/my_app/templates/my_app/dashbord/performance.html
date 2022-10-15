@@ -1,0 +1,127 @@
+﻿{% extends 'my_app/dashbord/head.html' %}
+{% block content %}
+{% load i18n %}
+
+					<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+					<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+					<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+					<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+					<script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/1.10.15/api/sum().js"></script>
+					
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3 class="page-title">Performance</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item active">Performance</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					
+					<!--/ Employee basic information-->
+					<section class="review-section information">
+						<div class="review-header text-center">
+							<h3 class="review-title">Employee Basic Information</h3>
+							<p class="text-muted">Lorem ipsum dollar</p>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div class="table-responsive">
+									<table class="table table-bordered table-nowrap review-table mb-0">
+										<tbody>
+											<tr>
+												<td>
+													<form>
+													{% comment %} <h4 id="mag">Something went's wrong</h4> {% endcomment %}
+														<div class="form-group">
+															<label for="name">Name</label>
+															<input type="text" class="form-control" id="name">
+														</div>
+														<div class="form-group">
+															<label for="name">last_name</label>
+															<input type="text" class="form-control" id="last_name" readonly>
+														</div>
+														<div class="form-group">
+															<label for="depart3">Department</label>
+															<input type="text" class="form-control" id="depart3" readonly>
+														</div>
+														
+													{% comment %} <div class="form-group">Emp_id {% endcomment %}
+															<label for="departa">Designation</label>
+															<input type="text" class="form-control" id="departa" readonly>
+														</div>
+													</form>
+												</td>
+												<td>
+													<form>
+														<div class="form-group">
+															<label for="doj">Emp ID</label>
+															<input type="text" class="form-control" id = "Emp_id" readonly >
+														</div>
+														<div class="form-group">
+															<label for="doj">Date of Join</label>
+															<input type="text" class="form-control" id="doj"readonly>
+														</div>
+														<div class="form-group">
+															<label for="doc">Salary</label>
+															<input type="text" class="form-control" id="sal"readonly>
+														</div>
+														<div class="form-group">
+															<label for="qualif1">email</label>
+															<input type="text" class="form-control" id="email"readonly>
+														</div>
+													</form>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						
+					
+					</section>	 
+					<!-- Completed Employee details-->
+					{% comment %} {% if nid %} {% endcomment %}
+					
+					<h3> Employee Performance </h3>
+					<div class="form-group">
+						
+						<input type="text" class="form-control" value="{{randome}}%" readonly>
+					</div>
+					{% comment %} {% endfor %} {% endcomment %}
+					{% comment %} {% endif %} {% endcomment %}
+					<script>
+						$('#name').change(function(){
+							console.log("-------->yes it is change")
+							var username = $(this).val();
+							//alert(username);
+							$.ajax({
+								url: '/valid_name/',
+								data: {
+								  'username': username
+								},
+								dataType: 'json',
+								method : 'POST',
+								success: function (res, status) {
+								//	alert("called")
+									$("#last_name").val(res[0].fields.last_name)
+									$("#email").val(res[0].fields.email)
+									$("#doj").val(res[0].fields.date)
+									$("#Emp_id").val(res[0].fields.Employe_id)
+									$("#sal").val(res[0].fields.salary)
+									$("#departa").val(res[0].fields.designation)
+									$("#depart3").val(res[0].fields.department)
+							   },
+							   error: function (res) {
+								alert("error");
+								 alert(res.status);                                                                                                                          
+							   }						});
+					});
+					</script>
+				
+{% endblock %}

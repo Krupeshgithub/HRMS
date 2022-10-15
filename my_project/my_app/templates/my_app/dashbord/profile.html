@@ -1,0 +1,114 @@
+﻿{% extends 'my_app/dashbord/head.html' %}
+{% load i18n %}
+{% block content %}
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3 class="page-title">Profile</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item active">Profile</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					
+					<div class="card mb-0">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="profile-view">
+										<div class="profile-img-wrap">
+											<div class="profile-img">
+												{% for i in uid %}
+												<img alt="" src="{{i.logo}}">
+											</div>
+										</div>
+										<div class="profile-basic">
+											<div class="row">
+												<div class="col-md-5">
+													<div class="profile-info-left">
+														<h3 class="user-name m-t-0 mb-0">{{i.name}}</h3>
+														<small class="text-muted">Web Designer</small>
+														<div class="staff-id">Employee ID : {{i.Employe_id}}</div>
+													</div>
+														<div class="text">Phone::  <a href="">{{i.phone}}</a></div>
+														<div class="text">Email::  <a href=""><span class="__cf_email__" data-cfemail="b8d2d7d0d6dcd7ddf8ddc0d9d5c8d4dd96dbd7d5">{{i.email}}</span></a></div>
+												</div>
+												<form method="POST" action="change_password_profile">
+													{% csrf_token %}
+													{% if s_msg %}
+														<div class="alert alert-success" role="alert">
+														{{s_msg}}
+														</div>
+													{% endif %}
+													{% if e_msg %}
+													<div class="alert alert-success" role="alert">
+														{{e_msg}}
+													</div>
+													{% endif %} 
+												<div class="col-sm-16">
+													<div class="form-group">
+														<label>Password</label>
+														<input class="form-control date" type="text" value="{{i.password}}" readonly>
+														<label>Change_Password</label>
+														<input class="form-control date" type="text" name="Change_Password">
+														<label>Confirm_Password</label>
+														<input class="form-control date" type="text" name="Confirm_Password">
+													</div>
+													<input type = "submit" value = "submit" >
+												</div>
+											</form>
+												{% endfor %}
+												{% for i in nid %}
+												<img alt="" src="{{i.logo}}">
+											</div>
+										</div>
+										<div class="profile-basic">
+											<div class="row">
+												<div class="col-md-5">
+													<div class="profile-info-left">
+														<h3 class="user-name m-t-0 mb-0">{{i.name}}</h3>
+														<small class="text-muted">Web Designer</small>
+														<div class="staff-id">Employee ID : {{i.Employe_id}}</div>
+													</div>
+														<div class="text">Phone::  <a href="">{{i.phone}}</a></div>
+														<div class="text">Email::  <a href=""><span class="__cf_email__" data-cfemail="b8d2d7d0d6dcd7ddf8ddc0d9d5c8d4dd96dbd7d5">{{i.email}}</span></a></div>
+												</div>
+												<form method="POST" action="change_password_profile">
+													{% csrf_token %}
+													{% if s_msg %}
+														<div class="alert alert-success" role="alert">
+														{{s_msg}}
+														</div>
+													{% endif %}
+													{% if e_msg %}
+													<div class="alert alert-success" role="alert">
+														{{e_msg}}
+													</div>
+													{% endif %} 
+												<div class="col-sm-16">
+													<div class="form-group">
+														<label>Password</label>
+														<input class="form-control date" type="text" value="{{i.password}}" readonly>
+														<label>Change_Password</label>
+														<input class="form-control date" type="text" name="Change_Password">
+														<label>Confirm_Password</label>
+														<input class="form-control date" type="text" name="Confirm_Password">
+													</div>
+													<input type = "submit" value = "submit" >
+												</div>
+											</form>
+												{% endfor %}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		<!-- /Main Wrapper -->
+{% endblock %}
